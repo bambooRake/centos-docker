@@ -25,3 +25,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && echo 'xdebug.remote_host=docker.for.win.localhost' >> /etc/php.ini \
     && sed -i -e "s/#ServerName/ServerName/g" /etc/httpd/conf/httpd.conf
 COPY ./virtual_host.conf /etc/httpd/conf.d/
+ENTRYPOINT apachectl -D FOREGROUND
