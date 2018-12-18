@@ -1,11 +1,13 @@
-docker-compose build
-docker-compose up -d
-docker exec -ti web /bin/bash
-    dockerログイン後
-    mysql -h db -P 3306 -u root -p
+/etc/init.d/mysqld stop
+mysqld_safe --skip-grant-tables 
 
-laravel appルートで下記を実行
-composer install
-cp .env.example .env
-php artisan key:generate
-.envは良しなに
+別ターミナルで
+mysql -uroot
+use mysql;
+update user SET PASSWORD=PASSWORD("password") WHERE USER='root';
+flush privileges;
+exit
+
+SET PASSWORD = PASSWORD('password');
+
+recruit@user
